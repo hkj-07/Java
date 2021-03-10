@@ -38,7 +38,7 @@ public class ExecutorTest {
 
     /**
      * 执行任务1，实现Callable方式
-     *
+     *有返回结果
      * @author hkj
      * @date   2021年3月7日
      */

@@ -3,7 +3,7 @@ import java.util.concurrent.*;
 线程池使用
  */
 public class ThreadPool {
-        public static void mainmian(){
+        public static void mainmian(String[] args){
             ExecutorService service=new ThreadPoolExecutor(5,10,60L,
                     TimeUnit.MILLISECONDS,new ArrayBlockingQueue<Runnable>(5), Executors.defaultThreadFactory());
 

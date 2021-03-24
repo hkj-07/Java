@@ -57,7 +57,7 @@ class ShareData {
     }
 }
 
-public class Quenee {
+public class ReentrantLockTest {
     public static void main(String[] args) {
         ShareData shareData = new ShareData();
         new Thread(() -> {

@@ -8,14 +8,19 @@ class Out {
     public Out(){
 
     }
-      class Inner{
+    //成员内部类
+    public class Inner{
         public Inner(){
-//            System.out.println(a);
+            System.out.println(a);//成员内部类能直接访问外部类的属性
             System.out.println(b);
         }
     }
-    static  class StaticInner{
+    //静态内部类
+    public static  class StaticInner{
         public StaticInner(){
+            Out out=new Out();
+            int e=out.a;
+//            System.out.println(a);//静态内部类不能直接访问外部类的属性
             System.out.println(b);
         }
     }

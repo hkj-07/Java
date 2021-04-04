@@ -1,3 +1,4 @@
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -9,6 +10,36 @@ import java.util.concurrent.locks.ReentrantLock;
  * - lock、await、Singal：新的lock机制
  * 传统模式
  */
+
+class Test {
+    //ReentrantLock默认非公平锁
+    static ReentrantLock reentrantLock = new ReentrantLock();
+    public static void main(String[] args) {
+        Thread t1 = new Thread(Test::testSync , "t1");
+        Thread t2 = new Thread(Test::testSync, "t2");
+        Thread t3 = new Thread(Test::testSync, "t3");
+        Test t=new Test();
+        testSync();
+
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+
+    public static void testSync() {
+        reentrantLock.lock();
+        try {
+            System.out.println(Thread.currentThread().getName() + "获得锁");
+
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            reentrantLock.unlock();
+        }
+    }
+
+}
 class ShareData {
     private int number = 0;
     private Lock lock = new ReentrantLock();

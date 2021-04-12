@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * @author MengKai
+ * @author HKJ
  * @create 2020-08-16
  * - sync、wait、notify：原来线程的机制
  * - lock、await、Singal：新的lock机制
@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 class Test {
     //ReentrantLock默认非公平锁
-    static ReentrantLock reentrantLock = new ReentrantLock();
+    static ReentrantLock reentrantLock = new ReentrantLock(true);
     public static void main(String[] args) {
         Thread t1 = new Thread(Test::testSync , "t1");
         Thread t2 = new Thread(Test::testSync, "t2");
@@ -110,4 +110,52 @@ public class ReentrantLockTest {
             }
         }, "BBB").start();
     }
+}
+//import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.locks.ReentrantLock;
+
+/**
+ * @author HKJ
+ * @create 2020-07-29
+ * 可重入锁
+ */
+class Test02 {
+    static ReentrantLock reentrantLock = new ReentrantLock();
+
+    public static void main(String[] args) {
+        Thread t1 = new Thread(Test02::test01, "t1");
+        Thread t2 = new Thread(Test02::test01, "t2");
+
+        t1.start();
+        t2.start();
+    }
+
+    public static void test01() {
+        reentrantLock.lock();
+        try {
+            System.out.println(Thread.currentThread().getName() + "获得锁，test01");
+            test02();
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println(Thread.currentThread().getName() + "释放锁，test01");
+            reentrantLock.unlock();
+        }
+    }
+
+    public static void test02() {
+        reentrantLock.lock();
+        try {
+            System.out.println(Thread.currentThread().getName() + "获得锁，test02");
+
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println(Thread.currentThread().getName() + "释放锁，test02");
+            reentrantLock.unlock();
+        }
+    }
+
 }

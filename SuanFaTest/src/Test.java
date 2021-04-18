@@ -1,43 +1,90 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-class Solution {
-    public static String Test(String s) {
-        if (s == null || s.length() == 0) {
-            return "";
-        }
-        if (s.length() < 2) {
-            return s;
-        }
-        int maxlength = 1;//初始的长度应该为1，减少一次循环
-        // char[] result;
-        List<Character> result = new ArrayList<>();
-        int leftindex = 0;
-        int rightindex = 0;
-        char[] str = s.toCharArray();//转换数组
-        for (int i = 0; i < str.length - 1; i++) {
-            for (int j = i + 1; j < str.length; j++) {
-                if (validTest(str,i,j) && maxlength < j - i + 1) {
-                    maxlength = j - i + 1;
-                    leftindex = i;
-                }
-            }
-        }
-        return s.substring(leftindex, maxlength+leftindex);
-    }
+class Test {
+    public boolean isValid(String s) {
+        Deque<Character> stack=new LinkedList<Character>();
+        Map<Character,Character> map=new HashMap<Character, Character>(){{
+            put('}','{');
+            put(']','[');
+            put(')','(');
 
-    private static boolean validTest(char[] charArray, int left, int right){
-        while(left<right){
-            if(charArray[left]!=charArray[right]){
+        }};
+        int len=s.length();
+        System.out.println(len);
+        String string=s;
+        if(len%2!=0){
+            return false;
+        }
+        for(int i=0;i<len/2;i++){
+            stack.push(string.charAt(i));
+        }
+        System.out.println(stack);
+        for(int i=len/2;i<len;i++){
+            if(stack.peek().equals(map.get(s.charAt( i)))){
+                System.out.println(stack.peek());
+                System.out.println(map.get(s.charAt(i)));
+                System.out.println(stack.pop());
+                System.out.println("下一轮"+i);
+                // stack.pop();
+//                 continue;
                 return false;
             }
-            left++;
-            right--;
         }
         return true;
     }
-    public static void main(String[] args){
-        String s="aacabdkacaa";
-        System.out.println(Test(s));;
+
+public boolean swap(char a,char b){
+//        if(a==("{")){
+//            if(b=="}"){
+//                return true;
+//            }
+//        }
+
+        switch (a){
+            case '{':
+                if(b=='}'){
+                    return true;
+                };
+            case '[':
+                if(b==']'){
+                    return true;
+                };
+            case '(':
+                if(b==')'){
+                    return true;
+                };
+            default:
+                return false;
+        }
     }
+
 }
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode() {}
+    ListNode(int val) { this.val = val; }
+    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+}
+class Solution{
+    public  static  void main(String[] args){
+        Test test=new Test();
+        String a="23";
+//        System.out.println(test.letterCombinations(a));
+        ListNode listNode=new ListNode();
+        ListNode node=new ListNode(0,listNode);
+        ListNode arr=node.next;
+//        System.out.println(node);
+//        System.out.println(arr);
+        Stack<Character>stack=new Stack<>();
+        String s="()[]{}";
+//        stack.peek();
+//        int len=s.length();
+//        s.charAt(0);
+        test.isValid(s);
+        System.out.println(test.isValid(s));
+
+        }
+    }
+
+

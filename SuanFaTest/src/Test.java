@@ -1,90 +1,148 @@
+
 import java.util.*;
 
 class Test {
-    public boolean isValid(String s) {
-        Deque<Character> stack=new LinkedList<Character>();
-        Map<Character,Character> map=new HashMap<Character, Character>(){{
-            put('}','{');
-            put(']','[');
-            put(')','(');
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        Queue<TreeNode> test=new LinkedList<>();
+        List<List<Integer>> ans=new ArrayList<>();
+        if(root==null){
+            return ans;
+        }
+        Stack<String> stack=new Stack<>();
+        String s="()()";
+//        stack.push()
+        test.add(root);
+        while(test!=null ){
+            List<Integer> tmp=new ArrayList<>();
 
-        }};
-        int len=s.length();
-        System.out.println(len);
-        String string=s;
-        if(len%2!=0){
-            return false;
-        }
-        for(int i=0;i<len/2;i++){
-            stack.push(string.charAt(i));
-        }
-        System.out.println(stack);
-        for(int i=len/2;i<len;i++){
-            if(stack.peek().equals(map.get(s.charAt( i)))){
-                System.out.println(stack.peek());
-                System.out.println(map.get(s.charAt(i)));
-                System.out.println(stack.pop());
-                System.out.println("下一轮"+i);
-                // stack.pop();
-//                 continue;
-                return false;
+            for(int i=test.size();i>0;i--){
+                TreeNode a=test.poll();
+                tmp.add(a.val);
+                if(a.left!=null){
+                    test.add(a.left);
+                }
+                if(a.right!=null){
+                    test.add(a.right);
+                }
             }
+
+            if(ans.size()%2!=0){
+                Collections.reverse(tmp);
+            }
+
+            ans.add(tmp);
         }
-        return true;
+
+        return ans;
     }
-
-public boolean swap(char a,char b){
-//        if(a==("{")){
-//            if(b=="}"){
-//                return true;
-//            }
-//        }
-
-        switch (a){
-            case '{':
-                if(b=='}'){
-                    return true;
-                };
-            case '[':
-                if(b==']'){
-                    return true;
-                };
-            case '(':
-                if(b==')'){
-                    return true;
-                };
-            default:
-                return false;
+        public void nextPermutation(int[] nums){
+            int i=nums.length-2;
+            while (i>=0&&nums[i]>nums[i+1]){
+                i--;
+            }
+            if(i>=0){
+                int j=nums.length-1;
+                while (j>=0&&nums[i]>=nums[j]){
+                    j--;
+                }
+                swap(nums,i,j);
+            }
+            resver(nums,i+1);
         }
+        public  void compare(List<Integer> ans){
+//            List<Integer> ans=new ArrayList<>();
+            for(int i=0;i<ans.size();i++){
+                for(int j=i+1;j<ans.size();j++){
+                    if(ans.get(i) .equals(ans.get(j))){
+                        ans.remove(j);
+                    }
+                }
+            }
+
+        }
+    public void resver(int[] nums,int start){
+        int i=start,j=nums.length-1;
+        while(i<j){
+            swap(nums,i,j);
+            i++;
+            j--;
+        }
+    }
+    public void swap(int[] nums,int i,int j){
+        int temp=0;
+        temp=nums[i];
+        nums[i]=nums[j];
+        nums[j]=temp;
+    }
+    public ListNode hebing(ListNode l1,ListNode l2){
+        if (l1 == null || l2 == null) {
+            return l1 != null ? l1 : l2;
+        }
+        ListNode dump=new ListNode(0);
+        ListNode cur=dump,a=l1,b=l2;
+        while (a!=null&&b!=null){
+            if(a.val<b.val){
+                cur.next=a;
+                a=a.next;
+            }else{
+                cur.next=b;
+                b=b.next;
+            }
+            cur=cur.next;
+        }
+        if(a==null){
+            cur.next=b;
+        }else{
+            cur.next=a;
+        }
+        return dump.next;
     }
 
 }
+class TreeNode{
+      int val;
+      TreeNode left;
+      TreeNode right;
+      TreeNode(int x) { val = x; }
+}
+
 class ListNode {
-    int val;
-    ListNode next;
-    ListNode() {}
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-}
+      int val;
+      ListNode next;
+      ListNode() {}
+      ListNode(int val) { this.val = val; }
+      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+  }
 class Solution{
     public  static  void main(String[] args){
         Test test=new Test();
-        String a="23";
-//        System.out.println(test.letterCombinations(a));
-        ListNode listNode=new ListNode();
-        ListNode node=new ListNode(0,listNode);
-        ListNode arr=node.next;
-//        System.out.println(node);
-//        System.out.println(arr);
-        Stack<Character>stack=new Stack<>();
-        String s="()[]{}";
-//        stack.peek();
-//        int len=s.length();
-//        s.charAt(0);
-        test.isValid(s);
-        System.out.println(test.isValid(s));
+//        ListNode a=new ListNode();
+////        test.mergeKLists(a);
+//        int[] as={1,2,2,3,3,5};
+//        int[] com={1,2,2,3,5,3};
+//        int[] aa=com;
+//        Arrays.sort(com);
+//        if(Arrays.equals(com,as)){
+//            System.out.println("一样");
+//        }else {
+//            System.out.println("不一样");
+//        }
+        List<Integer> list= new ArrayList<>();
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        list.add(3);
+        list.add(6);
+        list.add(3);
+
+        test.compare(list);
+//        System.out.printf(list);
+        for (int a:list
+             ) {
+            System.out.printf(String.valueOf(a));
 
         }
     }
+}
 
 

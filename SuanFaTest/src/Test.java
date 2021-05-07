@@ -2,16 +2,97 @@
 import java.util.*;
 
 class Test {
+    public int[] searchRange(int[] nums, int target) {
+        int len=nums.length;
+        int[] ans={-1,-1};
+        Set<Integer> lastans1=new HashSet<>();
+        List<Integer> lastans=new ArrayList<>();
+        // int[] lastans;
+        if(len==0){
+            return ans;
+        }
+        int l=0,r=len-1;
+        while(l<r){
+            int mid=(l+r)/2;
+            if(nums[mid]==target){
+                if(nums[mid+1]==target){
+                    lastans1.add(mid+1);
+                }
+                if(nums[mid-1]==target){
+                    lastans1.add(mid-1);
+                }
+                lastans.add(mid);
+            }
+            if(target<=nums[mid]){
+                r=mid-1;
+            }else{
+                l=mid+1;
+            }
+        }
+        Collections.sort(lastans);
+        if(lastans.size()==1){
+            lastans.add(-1);
+        }else if(lastans.size()>2){
+            List<Integer> ans2=new ArrayList<>();
+            ans2.add(lastans.get(0));
+            ans2.add(lastans.get(-1));
+            lastans=ans2;
+        }else if(lastans.size()==0){
+            List<Integer> ans3=new ArrayList<>();
+            ans3.add(-1);
+            ans3.add(-1);
+            lastans=ans3;
+        }
+        int[] intArr = lastans.stream().mapToInt(Integer::intValue).toArray();
+        return intArr;
+    }
+    public int search(int[] nums, int target) {
+        int n=nums.length;
+        if(n==0){
+            return -1;
+        }
+        if(n==1&&nums[0]==target){
+            return 0;
+        }else if(n==1&&nums[0]!=target){
+            return -1;
+        }
+        int l=0;
+        int r=n-1;
+        while(l<=r){
+            int mid=(l+r)/2;
+            if(nums[mid]==target){
+                return mid;
+            }
+            if(nums[0]<=nums[mid]){
+                if(nums[0]<=target&&target<nums[mid]){
+                    r=mid-1;
+                }else {
+                    l=mid+1;
+                }
+            }else {
+                if(nums[mid]<target&&target<=nums[r]){
+                    l=mid+1;
+                }else {
+                    r=mid-1;
+                }
+            }
+        }
+        return -1;
+
+
+    }
     public List<List<Integer>> levelOrder(TreeNode root) {
         Queue<TreeNode> test=new LinkedList<>();
         List<List<Integer>> ans=new ArrayList<>();
         if(root==null){
             return ans;
         }
-        Stack<String> stack=new Stack<>();
+        Stack<Character> stack=new Stack<>();
+        stack.peek();
         String s="()()";
 //        stack.push()
         test.add(root);
+        stack.clear();
         while(test!=null ){
             List<Integer> tmp=new ArrayList<>();
 
@@ -114,6 +195,7 @@ class ListNode {
       ListNode(int val, ListNode next) { this.val = val; this.next = next; }
   }
 class Solution{
+
     public  static  void main(String[] args){
         Test test=new Test();
 //        ListNode a=new ListNode();
@@ -127,21 +209,29 @@ class Solution{
 //        }else {
 //            System.out.println("不一样");
 //        }
-        List<Integer> list= new ArrayList<>();
-        list.add(3);
-        list.add(4);
-        list.add(5);
-        list.add(3);
-        list.add(6);
-        list.add(3);
+//        List<Integer> list= new ArrayList<>();
+//        list.add(3);
+//        list.add(4);
+//        list.add(5);
+//        list.add(3);
+//        list.add(6);
+//        list.add(3);
+//
+//        test.compare(list);
+////        System.out.printf(list);
+//        for (int a:list
+//             ) {
+//            System.out.printf(String.valueOf(a));
+//
+//        }
+        String s=")()())";
+//        int a=test.longestValidParentheses(s);
+        int[] a={5,7,7,8,8,10};
 
-        test.compare(list);
-//        System.out.printf(list);
-        for (int a:list
-             ) {
-            System.out.printf(String.valueOf(a));
+//        Arrays.sort(new List[]{lastans});
+        System.out.println(test.searchRange(a,8));
 
-        }
+
     }
 }
 

@@ -3,11 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ArrayList/ArrayList.iml" filepath="$PROJECT_DIR$/ArrayList/ArrayList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ArrayQueueTest1/ArrayQueueTest1.iml" filepath="$PROJECT_DIR$/ArrayQueueTest1/ArrayQueueTest1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Audition/Audition.iml" filepath="$PROJECT_DIR$/Audition/Audition.iml" />
       <module fileurl="file://$PROJECT_DIR$/BasicTest/BasicTest.iml" filepath="$PROJECT_DIR$/BasicTest/BasicTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/ClassTest/ClassTest.iml" filepath="$PROJECT_DIR$/ClassTest/ClassTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/JVMTest/JVMTest.iml" filepath="$PROJECT_DIR$/JVMTest/JVMTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Java.iml" filepath="$PROJECT_DIR$/.idea/Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ArrayQueue/MyQueue.java" filepath="$PROJECT_DIR$/ArrayQueue/MyQueue.java" />
       <module fileurl="file://$PROJECT_DIR$/NettyTest/NettyTest.iml" filepath="$PROJECT_DIR$/NettyTest/NettyTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/SuanFaTest/SuanFaTest.iml" filepath="$PROJECT_DIR$/SuanFaTest/SuanFaTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/Thread/Thread.iml" filepath="$PROJECT_DIR$/Thread/Thread.iml" />

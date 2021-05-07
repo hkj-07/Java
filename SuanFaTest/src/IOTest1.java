@@ -1,5 +1,6 @@
 // 本题为考试单行多行输入输出规范示例，无需提交，不计分。
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -25,6 +26,7 @@ public class IOTest1 {
             }
         }
         System.out.printf("总数：%d", total);
-
+        int[] a = new int[0];
+        Arrays.sort(a);
     }
 }

@@ -2,6 +2,93 @@
 import java.util.*;
 
 class Test {
+    public String longestPalindrome(String s) {
+//        if(s==null || s.length()==0){
+//            return "";
+//        }
+//        if (s.length() < 2) {
+//            return s;
+//        }
+        //中心扩散
+        int len=s.length();
+        int max=Integer.MIN_VALUE;
+//        int rmax=Integer.MIN_VALUE;
+        int lmax=Integer.MIN_VALUE;
+        int rmax=Integer.MIN_VALUE;
+        //长度为 n 的字符串会生成 2n-1 组回文中心
+        for(int i=0;i<2*s.length()-1;i++){
+            int l = i / 2, r = i / 2 + i % 2;
+            while(l>=0&&r<len&&s.charAt(l)==s.charAt(r)){
+                if(l>lmax&&r-l+1>max){
+                    lmax=l;
+                    max=r-l+1;
+                    rmax=r;
+                }
+//                 max=Math.max(max,r-l+1);
+                l--;
+                r++;
+            }
+        }
+        return s.substring(lmax,rmax+1);
+    }
+    public int countSubstrings(String s) {
+        char[] str=s.toCharArray();
+        int ans=0;
+        int len=s.length();
+//        ans+=len;
+        Set<String> set=new HashSet<>();
+        for(int i=0;i<len;i++){
+//            List<Character> list=new LinkedList<>();
+            for(int j=i;j<len;j++){
+                String stemp=s.substring(i,j+1);
+                if(huiwen(stemp)){
+                    ans++;
+                }
+            }
+        }
+        return ans;
+    }
+    public boolean huiwen(String list){
+        int len=list.length();
+        int l=0,r=len-1;
+        if(len==1){
+            return true;
+        }
+        while(l<=r){
+            if(list.charAt(l)!=(list.charAt(r))){
+                return false;
+            }
+            l++;
+            r--;
+        }
+        return true;
+    }
+        public int maxAreaOfIsland(int[][] grid) {
+            int ans=0;
+            for(int i=0;i<grid.length;i++){
+                for(int j=0;j<grid[0].length;j++){
+                    if(grid[i][j]==1){
+                        int temp=Area(grid,i,j);
+                        ans=Math.max(temp,ans);
+                    }
+                }
+            }
+            return ans;
+        }
+        public int Area(int[][] grid,int r,int c){
+            if(!inArea(grid,r,c)){
+                return 0;
+            }
+            if(grid[r][c]!=1){
+                return 0;
+            }
+            grid[r][c]=2;
+            return 1+Area(grid,r-1,c)+Area(grid,r+1,c)+Area(grid,r,c+1)+Area(grid,r,c-1);
+        }
+        public boolean inArea(int[][] grid,int r,int c){
+            return 0<r&&r<grid.length&&0<c&&c<grid[0].length;
+        }
+
     public int[] searchRange(int[] nums, int target) {
         int len=nums.length;
         int[] ans={-1,-1};
@@ -180,6 +267,7 @@ class Test {
     }
 
 }
+
 class TreeNode{
       int val;
       TreeNode left;
@@ -224,14 +312,23 @@ class Solution{
 //            System.out.printf(String.valueOf(a));
 //
 //        }
-        String s=")()())";
+        String s="cbbd";
 //        int a=test.longestValidParentheses(s);
         int[] a={5,7,7,8,8,10};
 
 //        Arrays.sort(new List[]{lastans});
-        System.out.println(test.searchRange(a,8));
-
-
+//        System.out.println(test.searchRange(a,8));
+        int[][] h={{1}};
+//        System.out.println(test.maxAreaOfIsland(h));
+//        System.out.println(test.countSubstrings(s));
+        char kk='a';
+        char kk1='A';
+//        char ans= (char) (kk1-kk);
+//        kk= (char) (kk+'0');
+//        System.out.println(ans);
+        System.out.println(test.longestPalindrome(s));
+        ListNode listNode=new ListNode();
+        ListNode[] list=new ListNode[100];
     }
 }
 

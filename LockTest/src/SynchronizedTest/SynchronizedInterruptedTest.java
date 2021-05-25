@@ -1,11 +1,14 @@
+package SynchronizedTest;
+
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * @author HKJ
  * @create 2021-04-04
  */
-public class SynchronizedTest {
+public class SynchronizedInterruptedTest {
     /**
      * 演示Lock的可中断和不可中断特性
      */

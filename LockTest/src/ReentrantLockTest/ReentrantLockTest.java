@@ -1,3 +1,5 @@
+package ReentrantLockTest;
+
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -40,6 +42,7 @@ class Test {
     }
 
 }
+
 class ShareData {
     private int number = 0;
     private Lock lock = new ReentrantLock();

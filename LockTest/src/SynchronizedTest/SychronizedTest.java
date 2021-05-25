@@ -1,3 +1,5 @@
+package SynchronizedTest;
+
 /**
  *@Author Hkj
  *@Date 2021/5/25

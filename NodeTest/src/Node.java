@@ -1,5 +1,6 @@
 /*
 链表练习
+包括链表的插入删除
  */
 public class Node {
 

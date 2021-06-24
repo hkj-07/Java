@@ -1,3 +1,5 @@
+package Collection;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,6 +38,7 @@ public class Array {
 
     }
 }
+
 class Animal<T> {
     private T[] array;
 

@@ -1,12 +1,13 @@
 package SynchronizedTest;
-
 /**
  *@Author Hkj
  *@Date 2021/5/25
  * Sychronized关键字测试
  */
-
+//@Slf4j
+//@Logger
 public class SychronizedTest {
+
     public synchronized void fun1Syn() throws InterruptedException {
         System.out.println("加锁普通方法1开始执行");
         Thread.sleep(10000);
@@ -30,10 +31,16 @@ public class SychronizedTest {
         System.out.println("加锁静态方法4执行成功");
     }
     private static SychronizedTest objStaticTest=new SychronizedTest();
+    //测试偏向锁
+    static A l=new A();
+
     public static void main(String[] args){
+
         SychronizedTest obj1=new SychronizedTest();
         SychronizedTest obj2=new SychronizedTest();
-
+        
+        //偏向锁
+//        log.debug("线程还未启动----无锁");
         /**两个线程同时调用同一个对象的不同普通锁方法块
          *同一个对象在两个线程中访问该对象的两个同步实例方法，
          *是顺序执行，因为锁针对的是对象，同一个对象，
@@ -132,3 +139,4 @@ public class SychronizedTest {
         }).start();
     }
 }
+class  A{}

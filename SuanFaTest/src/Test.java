@@ -326,10 +326,37 @@ class Solution{
 //        char ans= (char) (kk1-kk);
 //        kk= (char) (kk+'0');
 //        System.out.println(ans);
-        System.out.println(test.longestPalindrome(s));
-        ListNode listNode=new ListNode();
-        ListNode[] list=new ListNode[100];
+//        System.out.println(test.longestPalindrome(s));
+//        ListNode listNode=new ListNode();
+//        ListNode[] list=new ListNode[100];
+//        Map<Integer,Integer> map=new HashMap<>();
+//        map.put(1,2);
+//        map.get(1);
+//        int c=9;
+//        int d=12;
+//        System.out.println(map.get(1));
+//        String s1=Integer.toBinaryString(c);
+//        System.out.println(Integer.toBinaryString(c));
+//        int value = 1 << 4 | 9;
+//        String bs = Integer.toBinaryString(value);
+//        System.out.println(bs.substring(1));
+//        System.out.println(toBinary(680142203,16));
+//        System.out.println(toBinary(1111953568,16));
+//        System.out.println(Integer.bitCount(c^d));
+//        int s2=c^d;
+//        System.out.println(s2);
+//        System.out.println(s2>>1);
+        List<Integer> array=new ArrayList<>();
+        array.add(1);
+        System.out.println(!array.contains(1));
+
     }
+    public static String toBinary(int num, int digits) {
+        String cover = Integer.toBinaryString(1 << digits).substring(1);
+        String s = Integer.toBinaryString(num);
+        return s.length() < digits ? cover.substring(s.length()) + s : s;
+    }
+
 }
 
 

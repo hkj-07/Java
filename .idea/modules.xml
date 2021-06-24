@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ArrayList/ArrayList.iml" filepath="$PROJECT_DIR$/ArrayList/ArrayList.iml" />
       <module fileurl="file://$PROJECT_DIR$/ArrayQueueTest1/ArrayQueueTest1.iml" filepath="$PROJECT_DIR$/ArrayQueueTest1/ArrayQueueTest1.iml" />
       <module fileurl="file://$PROJECT_DIR$/NodeTest/Audition.iml" filepath="$PROJECT_DIR$/NodeTest/Audition.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BasicTest/BasicTest.iml" filepath="$PROJECT_DIR$/BasicTest/BasicTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaBasicTest/BasicTest.iml" filepath="$PROJECT_DIR$/JavaBasicTest/BasicTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/ClassTest/ClassTest.iml" filepath="$PROJECT_DIR$/ClassTest/ClassTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IOTest/IOTest.iml" filepath="$PROJECT_DIR$/IOTest/IOTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/JVMTest/JVMTest.iml" filepath="$PROJECT_DIR$/JVMTest/JVMTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Java.iml" filepath="$PROJECT_DIR$/.idea/Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/LockTest/LockTest.iml" filepath="$PROJECT_DIR$/LockTest/LockTest.iml" />

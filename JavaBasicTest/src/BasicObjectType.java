@@ -59,10 +59,10 @@ public class BasicObjectType {
                 this.name = name;
             }
 
-            @Override
-            public String toString() {
-                return super.toString();
-            }
+//            @Override
+//            public String toString() {
+//                return super.toString();
+//            }
 
             @Override
             protected Object clone() throws CloneNotSupportedException {
